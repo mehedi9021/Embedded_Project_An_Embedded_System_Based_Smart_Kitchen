@@ -1,0 +1,50 @@
+int pirsensor = 0;
+char degree = 176;
+void setup()
+{
+  pinMode(12, OUTPUT);
+  pinMode(2, INPUT);
+  pinMode(A0,INPUT);
+  pinMode(13, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(9, OUTPUT);
+  digitalWrite(13, HIGH);
+  Serial.begin(9600);
+}
+
+
+void loop()
+{
+  
+  float tmp = analogRead(A0);
+  float voltage = (tmp * 5.0)/1024;
+  float milliVolt = voltage * 1000;
+  float tmpCel =  (milliVolt-500)/10;
+  if(tmpCel > 27){
+    digitalWrite(11, HIGH);
+  	digitalWrite(9, LOW);
+    Serial.print("Temperature: ");
+    Serial.print(tmpCel);
+    Serial.println(degree);
+    Serial.println("Fan is ON now"); 
+    delay(2000);
+  }else{
+    digitalWrite(11, LOW);
+  	digitalWrite(9, LOW);
+    Serial.print("Temperature: ");
+    Serial.print(tmpCel);
+    Serial.println(degree);
+    Serial.println("Fan is Off now"); 
+    delay(2000);
+  }
+  pirsensor = digitalRead(2);
+  if(pirsensor==HIGH)
+  {
+    digitalWrite(12, HIGH);
+    delay(10);
+  }
+  else
+  {
+    digitalWrite(12, LOW);
+  }
+}
