@@ -1,5 +1,5 @@
 # Embedded_Project_An_Embedded_System_Based_Smart_Kitchen
-<b>About Project</b><br>
+<p align="justify"><b>About Project</b><br>
 The Kitchen environment is one of the most important measures to be closely monitored in real-time for the safet, security and comfort of people. So, to create a secure and
 comfortable environment we focus on this project. 
 
